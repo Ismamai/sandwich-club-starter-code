@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -77,9 +78,13 @@ public class DetailActivity extends AppCompatActivity {
         Log.d(TAG, "Also known as : " + alsoKnowAsText);
 
         if (TextUtils.isEmpty(alsoKnowAsText)) {
-            alsoKnowAsText = "..";
+            mBinding.alsoKnownLabel.setVisibility(View.GONE);
+            mBinding.alsoKnownTv.setVisibility(View.GONE);
+        } else {
+            mBinding.alsoKnownLabel.setVisibility(View.VISIBLE);
+            mBinding.alsoKnownTv.setVisibility(View.VISIBLE);
+            mBinding.alsoKnownTv.setText(alsoKnowAsText);
         }
-        mBinding.alsoKnownTv.setText(alsoKnowAsText);
 
 
         //PlaceOfOrigin
@@ -87,27 +92,38 @@ public class DetailActivity extends AppCompatActivity {
         Log.d(TAG, "Place of origin : " + placeOfOrigin);
 
         if (TextUtils.isEmpty(placeOfOrigin)) {
-            placeOfOrigin = "..";
+            mBinding.originLabel.setVisibility(View.GONE);
+            mBinding.originTv.setVisibility(View.GONE);
+        } else {
+            mBinding.originLabel.setVisibility(View.VISIBLE);
+            mBinding.originTv.setVisibility(View.VISIBLE);
+            mBinding.originTv.setText(placeOfOrigin);
         }
-        mBinding.originTv.setText(placeOfOrigin);
-
 
         //Description
         String description = sandwich.getDescription();
         Log.d(TAG, "Description : " + description);
 
-        if (TextUtils.isEmpty(placeOfOrigin)) {
-            description = "..";
+        if (TextUtils.isEmpty(description)) {
+            mBinding.descriptionLabel.setVisibility(View.GONE);
+            mBinding.descriptionTv.setVisibility(View.GONE);
+        } else {
+            mBinding.descriptionLabel.setVisibility(View.VISIBLE);
+            mBinding.descriptionTv.setVisibility(View.VISIBLE);
+            mBinding.descriptionTv.setText(description);
         }
-        mBinding.descriptionTv.setText(description);
 
         //Ingredients
         List<String> ingredients = sandwich.getIngredients();
         String ingredientsText = TextUtils.join("\n", ingredients);
         Log.d(TAG, "Ingredients : " + ingredientsText);
         if (TextUtils.isEmpty(ingredientsText)) {
-            ingredientsText = "..";
+            mBinding.ingredientsLabel.setVisibility(View.GONE);
+            mBinding.ingredientsTv.setVisibility(View.GONE);
+        } else {
+            mBinding.ingredientsLabel.setVisibility(View.VISIBLE);
+            mBinding.ingredientsTv.setVisibility(View.VISIBLE);
+            mBinding.ingredientsTv.setText(ingredientsText);
         }
-        mBinding.ingredientsTv.setText(ingredientsText);
     }
 }
