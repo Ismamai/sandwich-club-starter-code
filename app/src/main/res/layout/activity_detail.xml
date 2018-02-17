@@ -19,30 +19,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent" />
 
-
-        <TextView
-            android:id="@+id/name_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_iv"
-            tools:text="Name of the sandwich" />
-
         <TextView
             android:id="@+id/origin_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/detail_place_of_origin_label"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/name_tv"
-            app:layout_constraintTop_toBottomOf="@id/name_tv" />
+            app:layout_constraintStart_toStartOf="@id/image_iv"
+            app:layout_constraintTop_toBottomOf="@id/image_iv"
+            />
 
         <TextView
             android:id="@+id/origin_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/origin_label" />
+            app:layout_constraintTop_toTopOf="@id/origin_label"
+            tools:text="Origin ..."/>
 
         <TextView
             android:id="@+id/also_known_label"
@@ -50,7 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/detail_also_known_as_label"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/name_tv"
+            app:layout_constraintStart_toStartOf="@id/image_iv"
             app:layout_constraintTop_toBottomOf="@id/origin_label" />
 
         <TextView
@@ -67,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="@string/detail_ingredients_label"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/name_tv"
+            app:layout_constraintStart_toStartOf="@id/image_iv"
             app:layout_constraintTop_toBottomOf="@id/also_known_label" />
 
         <TextView
@@ -84,7 +77,7 @@
             android:layout_height="wrap_content"
             android:text="@string/detail_description_label"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/name_tv"
+            app:layout_constraintStart_toStartOf="@id/image_iv"
             app:layout_constraintTop_toBottomOf="@id/ingredients_label" />
 
         <TextView
