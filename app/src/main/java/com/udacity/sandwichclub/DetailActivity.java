@@ -73,7 +73,7 @@ public class DetailActivity extends AppCompatActivity {
 
         // AlsoKnownAs
         List<String> alsoKnownAs = sandwich.getAlsoKnownAs();
-        String alsoKnowAsText = TextUtils.join(", ", alsoKnownAs);
+        String alsoKnowAsText = TextUtils.join("\n", alsoKnownAs);
         Log.d(TAG, "Also known as : " + alsoKnowAsText);
 
         if (TextUtils.isEmpty(alsoKnowAsText)) {
@@ -103,7 +103,7 @@ public class DetailActivity extends AppCompatActivity {
 
         //Ingredients
         List<String> ingredients = sandwich.getIngredients();
-        String ingredientsText = TextUtils.join(", ", ingredients);
+        String ingredientsText = TextUtils.join("\n", ingredients);
         Log.d(TAG, "Ingredients : " + ingredientsText);
         if (TextUtils.isEmpty(ingredientsText)) {
             ingredientsText = "..";
