@@ -29,7 +29,7 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
 
@@ -45,7 +45,6 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
 
         String[] sandwiches = getResources().getStringArray(R.array.sandwich_details);
         String json = sandwiches[position];
@@ -100,6 +99,19 @@ public class DetailActivity extends AppCompatActivity {
             mBinding.originTv.setText(placeOfOrigin);
         }
 
+        //Ingredients
+        List<String> ingredients = sandwich.getIngredients();
+        String ingredientsText = TextUtils.join("\n", ingredients);
+        Log.d(TAG, "Ingredients : " + ingredientsText);
+        if (TextUtils.isEmpty(ingredientsText)) {
+            mBinding.ingredientsLabel.setVisibility(View.GONE);
+            mBinding.ingredientsTv.setVisibility(View.GONE);
+        } else {
+            mBinding.ingredientsLabel.setVisibility(View.VISIBLE);
+            mBinding.ingredientsTv.setVisibility(View.VISIBLE);
+            mBinding.ingredientsTv.setText(ingredientsText);
+        }
+
         //Description
         String description = sandwich.getDescription();
         Log.d(TAG, "Description : " + description);
@@ -113,17 +125,5 @@ public class DetailActivity extends AppCompatActivity {
             mBinding.descriptionTv.setText(description);
         }
 
-        //Ingredients
-        List<String> ingredients = sandwich.getIngredients();
-        String ingredientsText = TextUtils.join("\n", ingredients);
-        Log.d(TAG, "Ingredients : " + ingredientsText);
-        if (TextUtils.isEmpty(ingredientsText)) {
-            mBinding.ingredientsLabel.setVisibility(View.GONE);
-            mBinding.ingredientsTv.setVisibility(View.GONE);
-        } else {
-            mBinding.ingredientsLabel.setVisibility(View.VISIBLE);
-            mBinding.ingredientsTv.setVisibility(View.VISIBLE);
-            mBinding.ingredientsTv.setText(ingredientsText);
-        }
     }
 }
